@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami/Home_screen/Home_screen.dart';
 import 'package:islami/intro_screen/intro_screen.dart';
 import 'package:islami/utils/app_Routs.dart';
+import 'package:islami/utils/app_them.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,11 +17,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'islami',
-
-      initialRoute: AppRouts.introRouteName,
+      theme: AppThem.lightTheme,
+      darkTheme: AppThem.darkTheme,
+      themeMode: ThemeMode.dark,
+      initialRoute: AppRouts.homeRouteName,
       routes: {
-        AppRouts.homeRouteName: (context) => HomeScreen(),
         AppRouts.introRouteName: (context) => IntroScreen(),
+        AppRouts.homeRouteName: (context) => HomeScreen(),
       },
     );
   }

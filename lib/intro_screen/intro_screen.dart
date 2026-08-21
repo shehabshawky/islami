@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:islami/utils/myColors.dart';
+import 'package:islami/utils/app_Routs.dart';
+import 'package:islami/utils/app_color.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({super.key});
@@ -8,8 +9,7 @@ class IntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      backgroundColor: Mycolors.primaryColor,
+      backgroundColor: AppColor.primaryColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -20,13 +20,13 @@ class IntroScreen extends StatelessWidget {
             ),
             Expanded(
               child: IntroductionScreen(
-                globalBackgroundColor: Mycolors.primaryColor,
+                globalBackgroundColor: AppColor.primaryColor,
                 pages: [
                   PageViewModel(
                     titleWidget: Text(
                       "Welcome To Islmi App",
                       style: TextStyle(
-                        color: Mycolors.sacondryColor,
+                        color: AppColor.sacondryColor,
                         fontSize: 24,
                         fontWeight: .bold,
                       ),
@@ -46,7 +46,7 @@ class IntroScreen extends StatelessWidget {
                     titleWidget: Text(
                       "Welcome To Islmi App",
                       style: TextStyle(
-                        color: Mycolors.sacondryColor,
+                        color: AppColor.sacondryColor,
                         fontSize: 24,
                         fontWeight: .bold,
                       ),
@@ -55,7 +55,7 @@ class IntroScreen extends StatelessWidget {
                       textAlign: .center,
                       "We Are Very Excited To Have You In Our Community",
                       style: TextStyle(
-                        color: Mycolors.sacondryColor,
+                        color: AppColor.sacondryColor,
                         fontSize: 19,
                       ),
                     ),
@@ -73,7 +73,7 @@ class IntroScreen extends StatelessWidget {
                     titleWidget: Text(
                       "Welcome To Islmi",
                       style: TextStyle(
-                        color: Mycolors.sacondryColor,
+                        color: AppColor.sacondryColor,
                         fontSize: 24,
                         fontWeight: .bold,
                       ),
@@ -82,7 +82,7 @@ class IntroScreen extends StatelessWidget {
                       textAlign: .center,
                       "Read, and your Lord is the Most Generous",
                       style: TextStyle(
-                        color: Mycolors.sacondryColor,
+                        color: AppColor.sacondryColor,
                         fontSize: 19,
                       ),
                     ),
@@ -100,7 +100,7 @@ class IntroScreen extends StatelessWidget {
                     titleWidget: Text(
                       "Welcome To Islmi App",
                       style: TextStyle(
-                        color: Mycolors.sacondryColor,
+                        color: AppColor.sacondryColor,
                         fontSize: 24,
                         fontWeight: .bold,
                       ),
@@ -109,7 +109,7 @@ class IntroScreen extends StatelessWidget {
                       textAlign: .center,
                       "Praise the name of your Lord, the Most High",
                       style: TextStyle(
-                        color: Mycolors.sacondryColor,
+                        color: AppColor.sacondryColor,
                         fontSize: 19,
                       ),
                     ),
@@ -127,7 +127,7 @@ class IntroScreen extends StatelessWidget {
                     titleWidget: Text(
                       "Welcome To Islmi App",
                       style: TextStyle(
-                        color: Mycolors.sacondryColor,
+                        color: AppColor.sacondryColor,
                         fontSize: 24,
                         fontWeight: .bold,
                       ),
@@ -136,7 +136,7 @@ class IntroScreen extends StatelessWidget {
                       textAlign: .center,
                       "You can listen to the Holy Quran Radio through the application for free and easily",
                       style: TextStyle(
-                        color: Mycolors.sacondryColor,
+                        color: AppColor.sacondryColor,
                         fontSize: 19,
                       ),
                     ),
@@ -155,7 +155,7 @@ class IntroScreen extends StatelessWidget {
                 next: Text(
                   "Next",
                   style: TextStyle(
-                    color: Mycolors.sacondryColor,
+                    color: AppColor.sacondryColor,
                     fontSize: 13,
                     fontWeight: .bold,
                   ),
@@ -164,14 +164,14 @@ class IntroScreen extends StatelessWidget {
                 back: Text(
                   "Back",
                   style: TextStyle(
-                    color: Mycolors.sacondryColor,
+                    color: AppColor.sacondryColor,
                     fontSize: 13,
                     fontWeight: .bold,
                   ),
                 ),
                 dotsDecorator: DotsDecorator(
                   color: Color(0XFF707070),
-                  activeColor: Mycolors.sacondryColor,
+                  activeColor: AppColor.sacondryColor,
                   spacing: EdgeInsets.symmetric(horizontal: 3),
                   activeSize: Size(20, 10),
                   activeShape: RoundedRectangleBorder(
@@ -182,13 +182,17 @@ class IntroScreen extends StatelessWidget {
                 done: const Text(
                   "Done",
                   style: TextStyle(
-                    color: Mycolors.sacondryColor,
+                    color: AppColor.sacondryColor,
                     fontSize: 13,
                     fontWeight: .bold,
                   ),
                 ),
                 onDone: () {
-                  // On button pressed
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    AppRouts.homeRouteName,
+                    (route) => false,
+                  );
                 },
               ),
             ),
