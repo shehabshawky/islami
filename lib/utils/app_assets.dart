@@ -13,5 +13,8 @@ class AppAssets {
   
   static const String homeLogo = "assets/images/introhead.png";
 
+  static const String mostRecent = "assets/images/Most_Recent.png";
+  static const String soraNum= "assets/images/Sura Number.png";
+
   
 }
