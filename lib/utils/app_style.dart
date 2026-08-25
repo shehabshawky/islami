@@ -6,26 +6,31 @@ class AppStyle {
   static TextStyle white16bold = GoogleFonts.elMessiri(
     fontSize: 16,
     color: AppColor.whiteColor,
-    fontWeight: .bold
+    fontWeight: .bold,
+  );
+  static TextStyle gold20bold = GoogleFonts.elMessiri(
+    fontSize: 20,
+    color: AppColor.sacondryColor,
+    fontWeight: .bold,
   );
   static TextStyle white14bold = GoogleFonts.elMessiri(
     fontSize: 14,
     color: AppColor.whiteColor,
-    fontWeight: .bold
+    fontWeight: .bold,
   );
   static TextStyle white20bold = GoogleFonts.elMessiri(
     fontSize: 20,
     color: AppColor.whiteColor,
-    fontWeight: .bold
+    fontWeight: .bold,
   );
   static TextStyle black24bold = GoogleFonts.elMessiri(
     fontSize: 24,
     color: AppColor.blackColor,
-    fontWeight: .bold
+    fontWeight: .bold,
   );
   static TextStyle black14bold = GoogleFonts.elMessiri(
     fontSize: 16,
     color: AppColor.blackColor,
-    fontWeight: .bold
+    fontWeight: .bold,
   );
 }

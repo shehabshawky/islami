@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami/Models/quran_Resorces.dart';
+import 'package:islami/utils/app_Routs.dart';
 import 'package:islami/utils/app_assets.dart';
 import 'package:islami/utils/app_style.dart';
 
@@ -38,7 +39,11 @@ class SuraListItem extends StatelessWidget {
         style: AppStyle.white20bold,
       ), // widget on the right
       onTap: () {
-        print('Tile tapped');
+        Navigator.pushNamed(
+          context,
+          AppRouts.suraDetailsRouteName,
+          arguments: index,
+        );
       },
     );
   }

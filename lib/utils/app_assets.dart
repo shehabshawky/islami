@@ -10,11 +10,12 @@ class AppAssets {
   static const String radioPG = "assets/images/RadioPG.png";
   static const String sephaPG = "assets/images/SephaPG.png";
   static const String timePG = "assets/images/TimePG.png";
-  
+
   static const String homeLogo = "assets/images/introhead.png";
 
   static const String mostRecent = "assets/images/Most_Recent.png";
-  static const String soraNum= "assets/images/Sura Number.png";
 
+  static const String soraNum = "assets/images/Sura Number.png";
   
+  static const String suraDetailsPG = "assets/images/SuraDetailsPG.png";
 }
