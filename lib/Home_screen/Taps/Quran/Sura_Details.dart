@@ -62,26 +62,13 @@ class _SuraDetailsState extends State<SuraDetails> {
                       Expanded(
                         child: ListView.separated(
                           itemBuilder: (context, index) {
-                            return AyaBorder(text: vierses[index]);
+                            return AyaBorder(text: vierses[index], index: index,);
                           },
                           separatorBuilder: (context, index) {
                             return SizedBox(
-                              // width: 10,
+                             
                               height: 10,
-                              // child: Container(
-                              //   decoration: BoxDecoration(
-                              //     image: DecorationImage(
-                              //       image: AssetImage(AppAssets.soraNum),
-                              //       fit: .cover,
-                              //     ),
-                              //   ),
-                              //   child: Center(
-                              //     child: Text(
-                              //       "${index + 1}",
-                              //       style: AppStyle.white20bold,
-                              //     ),
-                              //   ),
-                              // ),
+                              
                             );
                           },
                           itemCount: vierses.length,

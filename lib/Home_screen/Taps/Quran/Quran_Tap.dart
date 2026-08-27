@@ -6,8 +6,15 @@ import 'package:islami/utils/app_assets.dart';
 import 'package:islami/utils/app_color.dart';
 import 'package:islami/utils/app_style.dart';
 
-class QuranTap extends StatelessWidget {
-  const QuranTap({super.key});
+class QuranTap extends StatefulWidget {
+  QuranTap({super.key});
+
+  @override
+  State<QuranTap> createState() => _QuranTapState();
+}
+
+class _QuranTapState extends State<QuranTap> {
+  List filterdList = List.generate(114, (index) => index);
 
   @override
   Widget build(BuildContext context) {
@@ -15,58 +22,101 @@ class QuranTap extends StatelessWidget {
       padding: EdgeInsets.symmetric(
         horizontal: MediaQuery.of(context).size.width * 0.03,
       ),
-      child: Column(
-        crossAxisAlignment: .start,
-        spacing: MediaQuery.of(context).size.width * 0.05,
-        children: [
-          TextFormField(
-            cursorColor: AppColor.whiteColor,
-            style: TextStyle(color: AppColor.whiteColor),
-
-            decoration: InputDecoration(
-              hintText: "Sura Name",
-              hintStyle: AppStyle.white16bold,
-              prefixIcon: Image.asset(
-                AppAssets.quranIcon,
-                color: AppColor.sacondryColor,
+      child: CustomScrollView(
+        slivers: [
+          SliverList(
+            delegate: SliverChildListDelegate([
+              TextFormField(
+                cursorColor: AppColor.whiteColor,
+                style: TextStyle(color: AppColor.whiteColor),
+                onChanged: (value) {
+                  shearchByName(value);
+                },
+                decoration: InputDecoration(
+                  hintText: "Sura Name",
+                  hintStyle: AppStyle.white16bold,
+                  prefixIcon: Image.asset(
+                    AppAssets.quranIcon,
+                    color: AppColor.sacondryColor,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      color: AppColor.sacondryColor,
+                      width: 2,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      color: AppColor.sacondryColor,
+                      width: 2,
+                    ),
+                  ),
+                ),
               ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: AppColor.sacondryColor, width: 2),
+              SizedBox(height: 20),
+              Text(
+                "Most Recently",
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: AppColor.sacondryColor, width: 2),
+              SizedBox(height: 20),
+              SizedBox(
+                height: 150,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return MostRecent();
+                  },
+                  separatorBuilder: (context, index) => SizedBox(width: 10),
+                  itemCount: 10,
+                ),
               ),
-            ),
-          ),
-          Text(
-            "Most Recently",
-            style: Theme.of(context).textTheme.headlineLarge,
-          ),
-          SizedBox(
-            height: 150,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return MostRecent();
-              },
-              separatorBuilder: (context, index) => SizedBox(width: 10),
-              itemCount: 10,
-            ),
-          ),
-          Expanded(
-            child: ListView.separated(
-              itemBuilder: (context, index) {
-                return SuraListItem(index: index);
-              },
-              separatorBuilder: (context, index) =>
-                  Divider(endIndent: 40, indent: 40),
-              itemCount: QuranResorces.arabicAuranSurasList.length,
-            ),
+              SizedBox(height: 20),
+              Text(
+                "Sura List",
+                style: Theme.of(context).textTheme.headlineLarge,
+              ),
+              SizedBox(height: 20),
+              filterdList.isEmpty
+                  ? Text("There is no result found", style: AppStyle.gold20bold)
+                  : ListView.separated(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return SuraListItem(index: filterdList[index]);
+                      },
+                      separatorBuilder: (context, index) =>
+                          Divider(endIndent: 40, indent: 40),
+                      itemCount: filterdList.length,
+                    ),
+            ]),
           ),
         ],
       ),
     );
+  }
+
+  void shearchByName(String suraname) {
+    List shearchList = [];
+    for (int i = 0; i < filterdList.length; i++) {
+      if (QuranResorces.englishQuranSurahsList[i].toLowerCase().contains(
+        suraname.toLowerCase(),
+      )) {
+        shearchList.add(i);
+      }
+
+      if (QuranResorces.arabicAuranSurasList[i].toLowerCase().contains(
+        suraname.toLowerCase(),
+      )) {
+        shearchList.add(i);
+      }
+    }
+
+    filterdList = shearchList;
+    if (suraname.isEmpty) {
+      filterdList = List.generate(114, (index) => index);
+    }
+    setState(() {});
   }
 }

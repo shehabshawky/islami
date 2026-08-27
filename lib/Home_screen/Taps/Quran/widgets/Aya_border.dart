@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:islami/utils/app_assets.dart';
 import 'package:islami/utils/app_color.dart';
 import 'package:islami/utils/app_style.dart';
 
 class AyaBorder extends StatelessWidget {
   final String text;
-  const AyaBorder({super.key, required this.text});
+  final int index;
+  const AyaBorder({super.key, required this.text, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,12 @@ class AyaBorder extends StatelessWidget {
           borderRadius: .circular(15),
           border: BoxBorder.all(color: AppColor.sacondryColor, width: 1.5),
         ),
-        child: Text(textAlign: .center, text, style: AppStyle.gold20bold),
+        child: Text(
+          textDirection: .rtl,
+          textAlign: .center,
+          "$text [${index + 1}]",
+          style: AppStyle.gold20bold,
+        ),
       ),
     );
   }
