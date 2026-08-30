@@ -1,17 +1,17 @@
 # islami
 
-A new Flutter project.
+Islami is an Islamic lifestyle mobile app (Flutter-based, per our earlier conversation) built around a dark theme with gold/beige accents, Arabic calligraphy, mosque silhouettes, and lantern motifs — giving it a warm, spiritual, night-prayer aesthetic.
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://github.com/user-attachments/assets/432115a0-29ad-448c-8e31-23c42a927a3a
+
+
+
+
+
+
