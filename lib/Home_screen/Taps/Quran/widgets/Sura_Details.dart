@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/Home_screen/Taps/Quran/widgets/Aya_border.dart';
 import 'package:islami/Models/quran_Resorces.dart';
+import 'package:islami/providers/Most_Recent_Provider.dart';
 import 'package:islami/utils/app_assets.dart';
 import 'package:islami/utils/app_color.dart';
 import 'package:islami/utils/app_style.dart';
+import 'package:provider/provider.dart';
 
 class SuraDetails extends StatefulWidget {
   const SuraDetails({super.key});
@@ -14,9 +16,11 @@ class SuraDetails extends StatefulWidget {
 }
 
 class _SuraDetailsState extends State<SuraDetails> {
+  late MostRecentProvider mostRecentprovider;
   List<String> vierses = [];
   @override
   Widget build(BuildContext context) {
+    mostRecentprovider = Provider.of<MostRecentProvider>(context);
     int index = ModalRoute.of(context)?.settings.arguments as int;
     if (vierses.isEmpty) {
       LoadAsset(index);
@@ -62,14 +66,13 @@ class _SuraDetailsState extends State<SuraDetails> {
                       Expanded(
                         child: ListView.separated(
                           itemBuilder: (context, index) {
-                            return AyaBorder(text: vierses[index], index: index,);
+                            return AyaBorder(
+                              text: vierses[index],
+                              index: index,
+                            );
                           },
                           separatorBuilder: (context, index) {
-                            return SizedBox(
-                             
-                              height: 10,
-                              
-                            );
+                            return SizedBox(height: 10);
                           },
                           itemCount: vierses.length,
                         ),
@@ -89,9 +92,13 @@ class _SuraDetailsState extends State<SuraDetails> {
     List<String> suraLins = sura.split('\n');
 
     vierses = suraLins;
-    for (String x in vierses) {
-      print(x);
-    }
+
     setState(() {});
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    mostRecentprovider.getRecentData();
   }
 }

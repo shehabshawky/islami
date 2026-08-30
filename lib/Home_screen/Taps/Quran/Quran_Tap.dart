@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:islami/Home_screen/Taps/Quran/widgets/Most_Recent.dart';
+import 'package:islami/Home_screen/Taps/Quran/widgets/Most_Recent_Itme.dart';
+import 'package:islami/Home_screen/Taps/Quran/widgets/Most_Recent_Wid.dart';
 import 'package:islami/Home_screen/Taps/Quran/widgets/Sura_List_item.dart';
 import 'package:islami/Models/quran_Resorces.dart';
+import 'package:islami/cash/Shared_Pref.dart';
+import 'package:islami/utils/app_Routs.dart';
 import 'package:islami/utils/app_assets.dart';
 import 'package:islami/utils/app_color.dart';
 import 'package:islami/utils/app_style.dart';
@@ -56,22 +59,7 @@ class _QuranTapState extends State<QuranTap> {
                 ),
               ),
               SizedBox(height: 20),
-              Text(
-                "Most Recently",
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
-              SizedBox(height: 20),
-              SizedBox(
-                height: 150,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return MostRecent();
-                  },
-                  separatorBuilder: (context, index) => SizedBox(width: 10),
-                  itemCount: 10,
-                ),
-              ),
+              MostRecentWid(),
               SizedBox(height: 20),
               Text(
                 "Sura List",
@@ -84,7 +72,17 @@ class _QuranTapState extends State<QuranTap> {
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
-                        return SuraListItem(index: filterdList[index]);
+                        return SuraListItem(
+                          index: filterdList[index],
+                          ontap: () {
+                            saveLastSuraIndex(filterdList[index]);
+                            Navigator.pushNamed(
+                              context,
+                              AppRouts.suraDetailsRouteName,
+                              arguments: filterdList[index],
+                            );
+                          },
+                        );
                       },
                       separatorBuilder: (context, index) =>
                           Divider(endIndent: 40, indent: 40),

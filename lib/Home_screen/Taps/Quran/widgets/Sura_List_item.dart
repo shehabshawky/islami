@@ -6,12 +6,12 @@ import 'package:islami/utils/app_style.dart';
 
 class SuraListItem extends StatelessWidget {
   final int index;
-  const SuraListItem({super.key, required this.index});
+  final VoidCallback ontap;
+  const SuraListItem({super.key, required this.index, required this.ontap});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      
       leading: SizedBox(
         width: 52,
         height: 52,
@@ -39,13 +39,7 @@ class SuraListItem extends StatelessWidget {
         QuranResorces.arabicAuranSurasList[index],
         style: AppStyle.white20bold,
       ), // widget on the right
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          AppRouts.suraDetailsRouteName,
-          arguments: index,
-        );
-      },
+      onTap: ontap,
     );
   }
 }
