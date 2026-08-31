@@ -25,7 +25,7 @@ class StationCard extends StatelessWidget {
     height: 103,
     decoration: BoxDecoration(
       color: AppColor.sacondryColor,
-      image: DecorationImage(image: AssetImage(image)),
+      image: DecorationImage(image: AssetImage(image), fit: .cover),
       borderRadius: BorderRadius.circular(16),
     ),
     child: Column(
