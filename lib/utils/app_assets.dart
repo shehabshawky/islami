@@ -16,6 +16,11 @@ class AppAssets {
   static const String mostRecent = "assets/images/Most_Recent.png";
 
   static const String soraNum = "assets/images/Sura Number.png";
-  
+
   static const String suraDetailsPG = "assets/images/SuraDetailsPG.png";
+
+  static const String evening = "assets/images/Evening.png";
+  static const String morning = "assets/images/Morning.png";
+  static const String soundPG = "assets/images/soundPG.png";
+  static const String maskPG = "assets/images/MaskPG.png";
 }
