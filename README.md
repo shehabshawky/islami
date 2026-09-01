@@ -1,6 +1,6 @@
 
 
-https://github.com/user-attachments/assets/d79c941b-adf2-499f-b5e9-a625a7959a0f
+
 
 # islami
 
